@@ -5,4 +5,4 @@
 
 
 ## 附录  
-该绩点计算器已经被小轻Kiyomi集成，欢迎下载使用>>>https://e.scene.eprezi.com/s/IWWsA0GH
+该功能已经被小轻Kiyomi集成，欢迎下载使用>>>https://e.scene.eprezi.com/s/IWWsA0GH
