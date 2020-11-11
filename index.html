@@ -122,7 +122,7 @@
                     var abs = Math.abs(Number(RSDArray[i]) - Number(average));;
                     totalAD = Number(totalAD) + Number(abs);
                 }
-                AD = strip(Math.sqrt(Number(totalAD) / Number(RSDArray.length)));
+                AD = strip(Number(totalAD) / Number(RSDArray.length));
                 document.getElementById('ADv').innerText = "AD:" + AD;
                 document.getElementById('RADv').innerText = "RAD:" + Number(AD) / Number(average) * 100 + "%";
             }
