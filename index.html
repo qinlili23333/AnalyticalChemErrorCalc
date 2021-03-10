@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>误差小助手</title>
+<title>分析化学计算器</title>
 
 <head>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
@@ -23,6 +23,7 @@
 </head>
 
 <body>
+    <H2>误差计算<H2>
     <p id="arraystring"></p>
     <label class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
         <input type="number" id="num" class="mdc-text-field__input" aria-labelledby="my-label-id">
@@ -54,6 +55,34 @@
     <p id="RADv"></p>
     <p id="Qmax"></p>
     <br>
+        <H2>透光率吸光度互转<H2>
+            <label class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+        <input type="number" id="trans" class="mdc-text-field__input" aria-labelledby="my-label-id">
+        <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+                <span class="mdc-floating-label" id="my-label-id">透光率%T</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+        </span>
+    </label>
+    <label class="mdc-text-field mdc-text-field--outlined" data-mdc-auto-init="MDCTextField">
+        <input type="number" id="absor" class="mdc-text-field__input" aria-labelledby="my-label-id">
+        <span class="mdc-notched-outline">
+            <span class="mdc-notched-outline__leading"></span>
+            <span class="mdc-notched-outline__notch">
+                <span class="mdc-floating-label" id="my-label-id">吸光度A</span>
+            </span>
+            <span class="mdc-notched-outline__trailing"></span>
+        </span>
+    </label>
+    <button onclick="TtoA();" class="mdc-button foo-button5">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">%T转A</span>
+    </button>
+    <button onclick="AtoT();" class="mdc-button foo-button6">
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">A转%T</span>
     <br>
     <button onclick="window.location.href='https://union-click.jd.com/jdc?e=&p=AyIGZRprFDJWWA1FBCVbV0IUWVALHElfBU4DRV0NXAAECUteDDcHGBpgQBBuCHsbY2FoZTBLGEMGaGwDF1clAyIEVBpSEAQaD1IbayUCETcedVolAhoOVR9YEgAXAmUbXBQHEwBRGlIdAhEFZRxbHDJSA1AdWxcFDgNQH1MQBCI3VRJdFAQQBVYYWyUBIjdlHmsWMk1DCEZrFwMTA1w%3D';" class="mdc-button foo-button4">
         <div class="mdc-button__ripple"></div>
@@ -143,6 +172,12 @@
                 window.alert("人家已经被榨干了,快停下!");
             }
         }
+                function TtoA() {
+            document.getElementById("absor").value = 0 - Math.log10(document.getElementById("trans").value / 100);
+        }
+        function AtoT() {
+            document.getElementById("trans").value = Math.pow(10, 0 - document.getElementById("absor").value) * 100;
+        }
     </script>
     <script>
         window.mdc.autoInit();
@@ -150,6 +185,8 @@
         mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button2'));
         mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button3'));
         mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button4'));
+        mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button5));
+        mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button6'));
         var getRandomColor = function () {
             return '#' + (function (color) {
                 return (color += 'abcdef'[Math.floor(Math.random() * 6)])
